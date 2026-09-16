@@ -1,5 +1,9 @@
+"use client";
+
+import { useEffect } from "react";
 import Image from "next/image";
-import { CircleCheck } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -75,8 +79,13 @@ function BackgroundEllipses() {
 function HeroFeatures() {
     return (
         <div className="flex flex-col gap-8">
-            {features.map((feature) => (
-                <div key={feature.title} className="flex gap-4">
+            {features.map((feature, index) => (
+                <div
+                    key={feature.title}
+                    className="flex gap-4"
+                    data-aos="fade-left"
+                    data-aos-delay={100 + index * 100}
+                >
                     <MarkGuard />
                     <div>
                         <h3 className="text-base font-semibold text-healiu-dark-dark">
@@ -93,6 +102,15 @@ function HeroFeatures() {
 }
 
 export function Hero() {
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: "ease-out-cubic",
+            offset: 40,
+        });
+    }, []);
+
     return (
         <section
             className="relative overflow-x-hidden pb-16 md:pb-24"
@@ -107,16 +125,27 @@ export function Hero() {
             <div className="app-width relative z-10 mx-auto flex flex-col pt-20 sm:pt-24 ">
                 <div className="grid flex-1 items-center gap-10 py-8 lg:grid-cols-[1fr_auto_1fr] lg:gap-8 xl:gap-12">
                     <div className="max-w-lg">
-                        <h1 className="text-3xl font-bold leading-tight tracking-tight text-healiu-dark-dark sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+                        <h1
+                            className="text-3xl font-bold leading-tight tracking-tight text-healiu-dark-dark sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
+                            data-aos="fade-up"
+                        >
                             Healthcare that comes to you, and finds you the right hospital in
                             seconds.
                         </h1>
-                        <p className="mt-5 text-base leading-relaxed text-healiu-dark sm:text-lg">
+                        <p
+                            className="mt-5 text-base leading-relaxed text-healiu-dark sm:text-lg"
+                            data-aos="fade-up"
+                            data-aos-delay="100"
+                        >
                             Telemedicine, online pharmacist consulting, home nursing and
                             physiotherapy, and a live hospital locator, all in one
                             subscription.
                         </p>
-                        <div className="mt-8 flex flex-wrap gap-4">
+                        <div
+                            className="mt-8 flex flex-wrap gap-4"
+                            data-aos="fade-up"
+                            data-aos-delay="200"
+                        >
                             <Button
                                 className={ctaPrimaryClassName}
                                 style={ctaPrimaryStyle}
@@ -132,7 +161,11 @@ export function Hero() {
                         </div>
                     </div>
 
-                    <div className="relative mx-auto w-[min(100%,420px)] shrink-0 lg:w-100">
+                    <div
+                        className="relative mx-auto w-[min(100%,420px)] shrink-0 lg:w-100"
+                        data-aos="fade-up"
+                        data-aos-delay="150"
+                    >
                         <Image
                             src="/images/pngs/hero-image.png"
                             alt="Smiling doctor ready for telemedicine consultation"
