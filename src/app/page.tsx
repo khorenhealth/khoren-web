@@ -1,4 +1,5 @@
 import { Hero } from "@/components/_core/landing-pages/home/hero";
+import { KeyFeatures } from "@/components/_core/landing-pages/home/key-features";
 import { Stats } from "@/components/_core/landing-pages/home/stats";
 import { Navbar } from "@/components/_core/landing-pages/shared/navbar";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="relative z-10 mx-auto -mt-8 max-w-7xl px-4 sm:-mt-12 sm:px-6 lg:px-8">
         <Stats />
       </div>
+      <KeyFeatures />
     </main>
   );
 }
