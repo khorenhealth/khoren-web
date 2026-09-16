@@ -1,33 +1,30 @@
-import { Globe, Handshake, Smile, Users } from "lucide-react";
+import {
+  MonthlyVisitsStatIcon,
+  PartnersStatsIcon,
+  PatientStatIcon,
+  StateStatsIcon,
+} from "../svg";
 
 const stats = [
   {
-    icon: Smile,
+    icon: PatientStatIcon,
     value: "150+",
     label: "Patients",
-    iconBg: "bg-[#E8DEFF]",
-    iconColor: "text-[#7C5CBF]",
   },
   {
-    icon: Users,
+    icon: MonthlyVisitsStatIcon,
     value: "15+",
     label: "Monthly visitor",
-    iconBg: "bg-[#FFE4DC]",
-    iconColor: "text-[#E07A5F]",
   },
   {
-    icon: Globe,
+    icon: StateStatsIcon,
     value: "3",
     label: "States",
-    iconBg: "bg-healiu-blue-light",
-    iconColor: "text-healiu-blue",
   },
   {
-    icon: Handshake,
+    icon: PartnersStatsIcon,
     value: "10",
     label: "Partners",
-    iconBg: "bg-[#FFF3D6]",
-    iconColor: "text-[#D4A017]",
   },
 ];
 
@@ -37,10 +34,8 @@ export function Stats() {
       <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label} className="flex items-center gap-4">
-            <div
-              className={`flex size-12 shrink-0 items-center justify-center rounded-full ${stat.iconBg}`}
-            >
-              <stat.icon className={`size-5 ${stat.iconColor}`} />
+            <div className="size-12 shrink-0 [&>svg]:size-full">
+              <stat.icon />
             </div>
             <div>
               <p className="text-2xl font-bold text-healiu-dark-dark">
