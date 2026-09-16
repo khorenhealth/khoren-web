@@ -225,4 +225,8 @@
   html {
     @apply font-sans;
   }
+
+  .app-width {
+    @apply mx-auto max-w-360 px-6 lg:px-10;
+  }
 }
