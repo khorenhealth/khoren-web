@@ -25,7 +25,7 @@ const navLinks = [
   { label: "Our Services", href: "/#services", hasDropdown: false },
   { label: "Find a Care Provider", href: "/provider", hasDropdown: false },
   { label: "Contact", href: "#contact", hasDropdown: false },
-  { label: "Log in", href: "#login", hasDropdown: false },
+  { label: "Log in", href: "/auth/login", hasDropdown: false },
 ];
 
 export function Navbar() {
