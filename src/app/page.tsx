@@ -1,6 +1,10 @@
+import { Faq } from "@/components/_core/landing-pages/home/faq";
+import { FeaturedServiceBoard } from "@/components/_core/landing-pages/home/featured-service-board";
+import { GetStarted } from "@/components/_core/landing-pages/home/get-started";
 import { Hero } from "@/components/_core/landing-pages/home/hero";
 import { HowDoesItWorks } from "@/components/_core/landing-pages/home/how-does-it-works";
 import { KeyFeatures } from "@/components/_core/landing-pages/home/key-features";
+import { OpinionsOfOurUsers } from "@/components/_core/landing-pages/home/opinions-of-our-users";
 import { Providers } from "@/components/_core/landing-pages/home/providers";
 import { Stats } from "@/components/_core/landing-pages/home/stats";
 import { Navbar } from "@/components/_core/landing-pages/shared/navbar";
@@ -18,6 +22,10 @@ export default function Home() {
       <KeyFeatures />
       <HowDoesItWorks />
       <Providers />
+      <FeaturedServiceBoard />
+      <OpinionsOfOurUsers />
+      <Faq />
+      <GetStarted />
     </main>
   );
 }

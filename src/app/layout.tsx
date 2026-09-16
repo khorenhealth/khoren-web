@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Khoren — Healthcare that comes to you",
   description:
     "Telemedicine, online pharmacist consulting, home nursing and physiotherapy, and a live hospital locator — all in one subscription.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
