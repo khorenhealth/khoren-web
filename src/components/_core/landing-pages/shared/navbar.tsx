@@ -22,8 +22,8 @@ import {
 } from "./cta-button-styles";
 
 const navLinks = [
-  { label: "Our Services", href: "#services", hasDropdown: true },
-  { label: "Find a Care Provider", href: "#providers", hasDropdown: true },
+  { label: "Our Services", href: "/#services", hasDropdown: false },
+  { label: "Find a Care Provider", href: "/provider", hasDropdown: false },
   { label: "Contact", href: "#contact", hasDropdown: false },
   { label: "Log in", href: "#login", hasDropdown: false },
 ];

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Activity,
   HeartPulse,
@@ -243,15 +244,15 @@ export function Providers() {
         </div>
 
         <div className="mt-8 flex justify-center" data-aos="fade-up">
-          <Button
-            variant="outline"
+          <Link
+            href="/provider"
             className={cn(
               ctaOutlineClassName,
-              "border-border px-10 text-healiu-dark-dark",
+              "inline-flex items-center border-border px-10 text-healiu-dark-dark",
             )}
           >
             See Full List
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

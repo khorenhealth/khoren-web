@@ -135,7 +135,7 @@ export function FeaturedServiceBoard() {
   };
 
   return (
-    <section className="overflow-hidden bg-[#F2F5FD] py-16 md:py-24">
+    <section id="services" className="overflow-hidden bg-[#F2F5FD] py-16 md:py-24">
       <div className="app-width">
         <h2
           className="text-center text-3xl font-bold tracking-tight sm:text-4xl"
