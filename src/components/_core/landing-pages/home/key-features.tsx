@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { CircleCheck } from "lucide-react";
+import { CircleCheck, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
   ctaPrimaryClassName,
   ctaPrimaryStyle,
 } from "../shared/cta-button-styles";
+import { cn } from "@/lib/utils";
 
 const waitlistAvatars = [
   { initials: "AM", tone: "bg-[#7C5CBF]" },
@@ -15,20 +16,21 @@ const waitlistAvatars = [
 
 export function KeyFeatures() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="overflow-x-hidden bg-white py-16 md:py-24">
       <div className="app-width grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
         <div
-          className="relative mx-auto w-full max-w-md lg:max-w-none"
+          className="relative mx-auto w-full min-w-0 max-w-md overflow-hidden rounded-[1.75rem] lg:max-w-none"
           data-aos="fade-right"
         >
-          <Image
-            src="/images/pngs/key-feature.png"
-            alt="Doctor on a telemedicine call with a patient"
-            width={648}
-            height={709}
-            className="h-auto w-full rounded-[1.75rem] object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
+          <div className="relative aspect-[4/5] w-full sm:aspect-[3/4] lg:aspect-[4/5]">
+            <Image
+              src="/images/pngs/key-feature.png"
+              alt="Doctor on a telemedicine call with a patient"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 50vw"
+            />
+          </div>
         </div>
 
         <div className="max-w-xl" data-aos="fade-left">
@@ -60,10 +62,15 @@ export function KeyFeatures() {
             />
             <Button
               type="submit"
-              className={ctaPrimaryClassName}
+              aria-label="Book Appointment"
+              className={cn(
+                ctaPrimaryClassName,
+                "size-10 shrink-0 px-0 sm:h-10 sm:w-auto sm:px-6",
+              )}
               style={ctaPrimaryStyle}
             >
-              Book Appointment
+              <Send className="size-4 sm:hidden" />
+              <span className="hidden sm:inline">Book Appointment</span>
             </Button>
           </form>
 

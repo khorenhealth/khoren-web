@@ -91,13 +91,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <Button
-            className={cn(ctaPrimaryClassName, "px-4")}
-            style={ctaPrimaryStyle}
-          >
-            Buy a service
-          </Button>
-
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               render={

@@ -9,8 +9,7 @@ export default function AuthLayout({
     <div
       className="min-h-screen"
       style={{
-        background:
-          "radial-gradient(84.07% 84.07% at 67.84% 15.93%, #FFFFFF 0%, #E4EFFF 100%)",
+        background: "linear-gradient(141.31deg, #F8F7F6 48.91%, #ADD1F2 97.36%)",
       }}
     >
       <AuthHeader />
