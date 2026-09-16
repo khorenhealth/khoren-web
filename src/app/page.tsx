@@ -1,6 +1,7 @@
 import { Hero } from "@/components/_core/landing-pages/home/hero";
 import { HowDoesItWorks } from "@/components/_core/landing-pages/home/how-does-it-works";
 import { KeyFeatures } from "@/components/_core/landing-pages/home/key-features";
+import { Providers } from "@/components/_core/landing-pages/home/providers";
 import { Stats } from "@/components/_core/landing-pages/home/stats";
 import { Navbar } from "@/components/_core/landing-pages/shared/navbar";
 
@@ -16,6 +17,7 @@ export default function Home() {
       </div>
       <KeyFeatures />
       <HowDoesItWorks />
+      <Providers />
     </main>
   );
 }
