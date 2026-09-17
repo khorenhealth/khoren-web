@@ -22,10 +22,10 @@ import {
 } from "./cta-button-styles";
 
 const navLinks = [
+  { label: "About Us", href: "/about-us", hasDropdown: false },
   { label: "Our Services", href: "/#services", hasDropdown: false },
   { label: "Find a Care Provider", href: "/provider", hasDropdown: false },
   { label: "Contact", href: "#contact", hasDropdown: false },
-  { label: "Log in", href: "/auth/login", hasDropdown: false },
 ];
 
 export function Navbar() {
@@ -76,12 +76,14 @@ export function Navbar() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
-          <Button
-            variant="outline"
-            className={cn(ctaOutlineClassName, ctaEqualWidth)}
-          >
-            Sign In
-          </Button>
+          <Link href="/auth/login">
+            <Button
+              variant="outline"
+              className={cn(ctaOutlineClassName, ctaEqualWidth)}
+            >
+              Sign In
+            </Button>
+          </Link>
           <Button
             className={cn(ctaPrimaryClassName, ctaEqualWidth)}
             style={ctaPrimaryStyle}

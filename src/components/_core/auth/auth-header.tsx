@@ -21,9 +21,9 @@ export function AuthHeader() {
             priority
           />
         </Link>
-        <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
+        {/* <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
           Buy a service
-        </Button>
+        </Button> */}
       </div>
     </header>
   );
