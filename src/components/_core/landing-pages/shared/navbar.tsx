@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 
@@ -22,13 +23,14 @@ import {
 } from "./cta-button-styles";
 
 const navLinks = [
+  { label: "About Us", href: "/about-us", hasDropdown: false },
   { label: "Our Services", href: "/#services", hasDropdown: false },
   { label: "Find a Care Provider", href: "/provider", hasDropdown: false },
-  { label: "Contact", href: "#contact", hasDropdown: false },
-  { label: "Log in", href: "/auth/login", hasDropdown: false },
+  { label: "Contact", href: "/contact", hasDropdown: false },
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -61,27 +63,37 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden flex-1 items-center justify-start gap-7 pl-8 lg:flex xl:gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="inline-flex items-center gap-1 text-sm font-medium text-healiu-dark-dark transition-colors hover:text-healiu-blue"
-            >
-              {link.label}
-              {link.hasDropdown && (
-                <ChevronDown className="size-3.5 opacity-60" strokeWidth={2} />
-              )}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              link.href !== "/#services" && pathname === link.href;
+
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={cn(
+                  "inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-healiu-blue",
+                  isActive ? "text-healiu-blue" : "text-healiu-dark-dark",
+                )}
+              >
+                {link.label}
+                {link.hasDropdown && (
+                  <ChevronDown className="size-3.5 opacity-60" strokeWidth={2} />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
-          <Button
-            variant="outline"
-            className={cn(ctaOutlineClassName, ctaEqualWidth)}
-          >
-            Sign In
-          </Button>
+          <Link href="/auth/login">
+            <Button
+              variant="outline"
+              className={cn(ctaOutlineClassName, ctaEqualWidth)}
+            >
+              Sign In
+            </Button>
+          </Link>
           <Button
             className={cn(ctaPrimaryClassName, ctaEqualWidth)}
             style={ctaPrimaryStyle}
@@ -121,22 +133,32 @@ export function Navbar() {
               </SheetHeader>
 
               <nav className="flex flex-1 flex-col gap-1 px-2 py-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center gap-1 rounded-lg px-3 py-3 text-sm font-medium text-healiu-dark-dark transition-colors hover:bg-healiu-blue-light hover:text-healiu-blue"
-                  >
-                    {link.label}
-                    {link.hasDropdown && (
-                      <ChevronDown
-                        className="size-3.5 opacity-60"
-                        strokeWidth={2}
-                      />
-                    )}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive =
+                    link.href !== "/#services" && pathname === link.href;
+
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        "flex items-center gap-1 rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-healiu-blue-light hover:text-healiu-blue",
+                        isActive
+                          ? "bg-healiu-blue-light text-healiu-blue"
+                          : "text-healiu-dark-dark",
+                      )}
+                    >
+                      {link.label}
+                      {link.hasDropdown && (
+                        <ChevronDown
+                          className="size-3.5 opacity-60"
+                          strokeWidth={2}
+                        />
+                      )}
+                    </Link>
+                  );
+                })}
               </nav>
 
               <div className="flex flex-col gap-3 border-t border-border p-4">

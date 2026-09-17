@@ -79,7 +79,7 @@ export function SignupForm() {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <div className="w-full rounded-3xl bg-white p-6 shadow-[0_12px_40px_rgba(11,105,201,0.1)] sm:p-8">
+    <div className="w-full rounded-tl-3xl rounded-tr-3xl bg-white p-6 shadow-[0_12px_40px_rgba(11,105,201,0.1)] sm:p-8">
       <h1 className="text-3xl font-bold tracking-tight text-healiu-dark-dark">
         Sign up
       </h1>
