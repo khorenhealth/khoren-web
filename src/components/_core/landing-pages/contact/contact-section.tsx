@@ -15,22 +15,22 @@ import { cn } from "@/lib/utils";
 const contactDetails = [
   {
     title: "Phone",
-    value: "+234 7071475 162",
-    href: "tel:+2347071475162",
+    value: "+234  07071475982",
+    href: "tel:+234  07071475982",
     icon: Phone,
     iconClassName: "bg-[#E7F0FA] text-healiu-blue",
   },
   {
     title: "Our Email",
-    value: "admin@mykhoren.com",
-    href: "mailto:admin@mykhoren.com",
+    value: "admin@trykhoren.com",
+    href: "mailto:admin@trykhoren.com",
     icon: Mail,
     iconClassName: "bg-[#F3E8FF] text-[#7C3AED]",
   },
   {
     title: "Documentation",
-    value: "admin@mykhoren.com/docs",
-    href: "mailto:admin@mykhoren.com",
+    value: "admin@trykhoren.com/docs",
+    href: "mailto:admin@trykhoren.com",
     icon: FileText,
     iconClassName: "bg-[#E7F0FA] text-healiu-blue",
   },
@@ -42,9 +42,9 @@ function BackgroundBlobs() {
       className="pointer-events-none absolute inset-0 overflow-hidden"
       aria-hidden="true"
     >
-      <div className="absolute -left-24 top-40  size-[26rem] rounded-full bg-[#D6E8FF]/80 blur-3xl" />
-      <div className="absolute -right-20 top-24 size-[28rem] rounded-full bg-[#D8F5E8]/70 blur-3xl" />
-      <div className="absolute bottom-0 left-1/3 size-[22rem] -translate-x-1/2 rounded-full bg-[#EAF7F0]/60 blur-3xl" />
+      <div className="absolute -left-24 top-40  size-104 rounded-full bg-[#D6E8FF]/80 blur-3xl" />
+      <div className="absolute -right-20 top-24 size-112 rounded-full bg-[#D8F5E8]/70 blur-3xl" />
+      <div className="absolute bottom-0 left-1/3 size-88 -translate-x-1/2 rounded-full bg-[#EAF7F0]/60 blur-3xl" />
     </div>
   );
 }
