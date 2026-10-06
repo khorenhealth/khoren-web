@@ -35,24 +35,24 @@ const filters: { id: string; label: string; icon: LucideIcon }[] = [
 const providers = [
   {
     id: 1,
-    name: "Dr. James Okonkwo",
-    role: "Primary care doctor",
-    image: "/images/pngs/doctor-1.png",
-    category: "doctors",
+    name: "RN. Adeola Jacob",
+    role: "Nurse",
+    image: "/images/pngs/providers/adeola-jacob.png",
+    category: "nurses",
   },
   {
     id: 2,
-    name: "Dr. Amara Nwosu",
-    role: "Primary care doctor",
-    image: "/images/pngs/doctor-2.png",
+    name: "DR. Victor Oshimagyeuye",
+    role: "Doctor",
+    image: "/images/pngs/providers/victor-oshimagyeuye.png",
     category: "doctors",
   },
   {
     id: 3,
-    name: "Dr. Chidi Eze",
-    role: "Primary care doctor",
-    image: "/images/pngs/doctor-3.png",
-    category: "doctors",
+    name: "PT. Aishat Abdulraheem",
+    role: "Physiotherapist",
+    image: "/images/pngs/providers/aishat-abdulraheem.png",
+    category: "physiotherapist",
   },
 ];
 
