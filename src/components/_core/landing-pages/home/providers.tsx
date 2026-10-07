@@ -16,6 +16,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import {
+  BOOKING_URL,
   ctaOutlineClassName,
   ctaPrimaryClassName,
   ctaPrimaryStyle,
@@ -100,15 +101,22 @@ function ProviderCard({
             {provider.name}
           </h3>
           <p className="mt-1 text-sm text-healiu-dark">{provider.role}</p>
-          <Button
-            className={cn(
-              "mt-4 w-full",
-              featured ? ctaPrimaryClassName : ctaOutlineClassName,
-            )}
-            style={featured ? ctaPrimaryStyle : undefined}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 block"
           >
-            Book Now
-          </Button>
+            <Button
+              className={cn(
+                "w-full",
+                featured ? ctaPrimaryClassName : ctaOutlineClassName,
+              )}
+              style={featured ? ctaPrimaryStyle : undefined}
+            >
+              Book Now
+            </Button>
+          </a>
         </div>
       </div>
     </article>

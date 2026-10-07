@@ -8,6 +8,7 @@ import { Mic, PhoneOff, Video } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
+  BOOKING_URL,
   ctaOutlineClassName,
   ctaPrimaryClassName,
   ctaPrimaryStyle,
@@ -105,9 +106,15 @@ export function AboutHero() {
               <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
                 Get Started
               </Button>
-              <Button variant="outline" className={ctaOutlineClassName}>
-                Book Online Consultation
-              </Button>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" className={ctaOutlineClassName}>
+                  Book Online Consultation
+                </Button>
+              </a>
             </div>
           </div>
 

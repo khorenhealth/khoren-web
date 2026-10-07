@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 
 import { Button } from "@/components/ui/button";
 import {
+    BOOKING_URL,
     ctaOutlineClassName,
     ctaPrimaryClassName,
     ctaPrimaryStyle,
@@ -152,12 +153,18 @@ export function Hero() {
                             >
                                 Get Started
                             </Button>
-                            <Button
-                                variant="outline"
-                                className={ctaOutlineClassName}
+                            <a
+                                href={BOOKING_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                Book Online Consultation
-                            </Button>
+                                <Button
+                                    variant="outline"
+                                    className={ctaOutlineClassName}
+                                >
+                                    Book free Consultation
+                                </Button>
+                            </a>
                         </div>
                     </div>
 
@@ -167,7 +174,7 @@ export function Hero() {
                         data-aos-delay="150"
                     >
                         <Image
-                            src="/images/pngs/hero-image.png"
+                            src="/images/pngs/hero-image.jpeg"
                             alt="Smiling doctor ready for telemedicine consultation"
                             width={400}
                             height={520}
@@ -175,6 +182,32 @@ export function Hero() {
                             className="h-auto w-full rounded-3xl object-cover shadow-lg"
                             sizes="(max-width: 1024px) 400px, 520px"
                         />
+
+                        <div className="absolute inset-x-3 bottom-4 z-10 sm:inset-x-4 sm:bottom-5">
+                            <div className="flex items-center gap-3 rounded-2xl bg-white p-2.5 shadow-[0_10px_30px_rgba(11,105,201,0.16)] sm:gap-3.5 sm:rounded-[1.25rem] sm:p-3">
+                                <div className="relative size-12 shrink-0 overflow-hidden rounded-xl sm:size-14">
+                                    <Image
+                                        src="/images/pngs/providers/micheal-okoh.png"
+                                        alt="PT. Micheal Okoh"
+                                        fill
+                                        className="object-cover object-top"
+                                        sizes="56px"
+                                    />
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                    <p className="truncate text-sm font-semibold text-healiu-dark-dark sm:text-base">
+                                        PT. Micheal Okoh
+                                    </p>
+                                    <p className="text-xs text-healiu-dark sm:text-sm">
+                                        Physiotherapist
+                                    </p>
+                                </div>
+                                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-healiu-neutral-light px-2.5 py-1 text-xs font-medium text-healiu-dark-dark">
+                                    <span className="size-1.5 rounded-full bg-healiu-green" />
+                                    Available
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="max-w-sm lg:max-w-none lg:justify-self-end">

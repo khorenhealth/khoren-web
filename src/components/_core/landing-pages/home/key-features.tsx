@@ -3,6 +3,7 @@ import { CircleCheck, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
+  BOOKING_URL,
   ctaPrimaryClassName,
   ctaPrimaryStyle,
 } from "../shared/cta-button-styles";
@@ -49,7 +50,7 @@ export function KeyFeatures() {
             assessments.
           </p>
 
-          <form className="mt-8 flex items-center gap-2 rounded-full border border-border bg-white p-1.5 shadow-sm">
+          <div className="mt-8 flex items-center gap-2 rounded-full border border-border bg-white p-1.5 shadow-sm">
             <label htmlFor="appointment-date" className="sr-only">
               Appointment date
             </label>
@@ -60,19 +61,25 @@ export function KeyFeatures() {
               placeholder="dd/mm/yyyy"
               className="min-w-0 flex-1 bg-transparent px-4 py-2 text-sm text-healiu-dark-dark outline-none placeholder:text-healiu-dark-lighter"
             />
-            <Button
-              type="submit"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Book Appointment"
-              className={cn(
-                ctaPrimaryClassName,
-                "size-10 shrink-0 px-0 sm:h-10 sm:w-auto sm:px-6",
-              )}
-              style={ctaPrimaryStyle}
             >
-              <Send className="size-4 sm:hidden" />
-              <span className="hidden sm:inline">Book Appointment</span>
-            </Button>
-          </form>
+              <Button
+                type="button"
+                className={cn(
+                  ctaPrimaryClassName,
+                  "size-10 shrink-0 px-0 sm:h-10 sm:w-auto sm:px-6",
+                )}
+                style={ctaPrimaryStyle}
+              >
+                <Send className="size-4 sm:hidden" />
+                <span className="hidden sm:inline">Book Appointment</span>
+              </Button>
+            </a>
+          </div>
 
           <div className="mt-8 flex items-center gap-3">
             <div className="flex -space-x-3">

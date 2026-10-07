@@ -17,6 +17,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import {
+  BOOKING_URL,
   ctaOutlineClassName,
   ctaPrimaryClassName,
   ctaPrimaryStyle,
@@ -159,15 +160,22 @@ function ProviderCard({
           <p className="mt-1 text-sm text-healiu-dark">{provider.role}</p>
 
           <div className="mt-4 group-hover:hidden">
-            <Button
-              variant="outline"
-              className={cn(
-                ctaOutlineClassName,
-                "w-full border-border text-healiu-dark-dark",
-              )}
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
             >
-              Book Now
-            </Button>
+              <Button
+                variant="outline"
+                className={cn(
+                  ctaOutlineClassName,
+                  "w-full border-border text-healiu-dark-dark",
+                )}
+              >
+                Book Now
+              </Button>
+            </a>
           </div>
 
           <div className="mt-4 hidden gap-2 group-hover:flex">
@@ -180,12 +188,19 @@ function ProviderCard({
             >
               View Profile
             </Button>
-            <Button
-              className={cn(ctaPrimaryClassName, "flex-1 px-3")}
-              style={ctaPrimaryStyle}
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1"
             >
-              Book Now
-            </Button>
+              <Button
+                className={cn(ctaPrimaryClassName, "w-full px-3")}
+                style={ctaPrimaryStyle}
+              >
+                Book Now
+              </Button>
+            </a>
           </div>
         </div>
       </div>
