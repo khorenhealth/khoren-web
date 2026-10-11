@@ -16,8 +16,9 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import {
-  ctaEqualWidth,
-  ctaOutlineClassName,
+  BOOKING_URL,
+  // ctaEqualWidth,
+  // ctaOutlineClassName,
   ctaPrimaryClassName,
   ctaPrimaryStyle,
 } from "./cta-button-styles";
@@ -86,7 +87,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
-          <Link href="/auth/login">
+          {/* <Link href="/auth/login">
             <Button
               variant="outline"
               className={cn(ctaOutlineClassName, ctaEqualWidth)}
@@ -99,10 +100,29 @@ export function Navbar() {
             style={ctaPrimaryStyle}
           >
             Buy a service
-          </Button>
+          </Button> */}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
+              Book free Consultation
+            </Button>
+          </a>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:block"
+          >
+            <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
+              Book free Consultation
+            </Button>
+          </a>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               render={
@@ -162,7 +182,7 @@ export function Navbar() {
               </nav>
 
               <div className="flex flex-col gap-3 border-t border-border p-4">
-                <Button
+                {/* <Button
                   variant="outline"
                   className={cn(ctaOutlineClassName, "w-full")}
                   onClick={() => setOpen(false)}
@@ -175,7 +195,20 @@ export function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   Buy a service
-                </Button>
+                </Button> */}
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                >
+                  <Button
+                    className={cn(ctaPrimaryClassName, "w-full")}
+                    style={ctaPrimaryStyle}
+                  >
+                    Book free Consultation
+                  </Button>
+                </a>
               </div>
             </SheetContent>
           </Sheet>

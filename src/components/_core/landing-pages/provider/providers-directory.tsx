@@ -19,8 +19,6 @@ import { Button } from "@/components/ui/button";
 import {
   BOOKING_URL,
   ctaOutlineClassName,
-  ctaPrimaryClassName,
-  ctaPrimaryStyle,
 } from "../shared/cta-button-styles";
 import { cn } from "@/lib/utils";
 
@@ -134,12 +132,12 @@ function ProviderCard({
   return (
     <article className="group flex w-full flex-col">
       <div className="relative overflow-hidden rounded-[1.5rem] bg-healiu-neutral-light-active transition-colors duration-300 group-hover:bg-healiu-blue-darker">
-        <div className="relative aspect-square w-full">
+        <div className="relative aspect-square w-full overflow-hidden">
           <Image
             src={provider.image}
             alt={provider.name}
             fill
-            className="object-cover object-top"
+            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 
@@ -159,49 +157,22 @@ function ProviderCard({
           </h3>
           <p className="mt-1 text-sm text-healiu-dark">{provider.role}</p>
 
-          <div className="mt-4 group-hover:hidden">
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <Button
-                variant="outline"
-                className={cn(
-                  ctaOutlineClassName,
-                  "w-full border-border text-healiu-dark-dark",
-                )}
-              >
-                Book Now
-              </Button>
-            </a>
-          </div>
-
-          <div className="mt-4 hidden gap-2 group-hover:flex">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 block"
+          >
             <Button
               variant="outline"
               className={cn(
                 ctaOutlineClassName,
-                "flex-1 border-border px-3 text-healiu-dark-dark",
+                "w-full border-border text-healiu-dark-dark",
               )}
             >
-              View Profile
+              Book Now
             </Button>
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1"
-            >
-              <Button
-                className={cn(ctaPrimaryClassName, "w-full px-3")}
-                style={ctaPrimaryStyle}
-              >
-                Book Now
-              </Button>
-            </a>
-          </div>
+          </a>
         </div>
       </div>
     </article>
