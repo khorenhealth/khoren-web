@@ -67,7 +67,7 @@ function ProviderCard({
   return (
     <article
       className={cn(
-        "flex w-full flex-col transition-transform duration-300",
+        "group flex w-full flex-col transition-transform duration-300",
         featured && "z-10 sm:scale-[1.03]",
       )}
     >
@@ -77,12 +77,12 @@ function ProviderCard({
           featured ? "bg-healiu-blue-darker" : "bg-healiu-neutral-light-active",
         )}
       >
-        <div className="relative aspect-square w-full">
+        <div className="relative aspect-square w-full overflow-hidden">
           <Image
             src={provider.image}
             alt={provider.name}
             fill
-            className="object-cover object-top"
+            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, 33vw"
           />
 
