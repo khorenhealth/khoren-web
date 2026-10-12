@@ -1,16 +1,30 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import {
-  BOOKING_URL,
-  ctaOutlineClassName,
-  ctaPrimaryClassName,
-  ctaPrimaryStyle,
-} from "@/components/_core/landing-pages/shared/cta-button-styles";
-import { cn } from "@/lib/utils";
+const PROVIDER_FORM_URL =
+  process.env.NEXT_PUBLIC_PROVIDER_FORM_URL ??
+  "https://docs.google.com/forms/d/1BGmDs1_yPNawJTfAL6YfZuaRo4Kgjkehv8vGXUnikrM/viewform";
 
-export function BookingSuccess() {
+const REDIRECT_DELAY_MS = 2000;
+
+export function BookingSuccess({
+  redirectToForm = false,
+}: {
+  redirectToForm?: boolean;
+}) {
+  useEffect(() => {
+    if (!redirectToForm) return;
+
+    const timeoutId = window.setTimeout(() => {
+      window.location.assign(PROVIDER_FORM_URL);
+    }, REDIRECT_DELAY_MS);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [redirectToForm]);
+
   return (
     <section
       className="relative overflow-hidden pb-20 pt-28 sm:pb-24 sm:pt-32"
@@ -42,12 +56,18 @@ export function BookingSuccess() {
             sent to your email.
           </p>
 
-          <Link
-            href="/"
-            className="mt-6 text-sm font-medium text-healiu-dark transition-colors hover:text-healiu-blue"
-          >
-            Back to home
-          </Link>
+          {redirectToForm ? (
+            <p className="mt-6 text-sm text-healiu-dark">
+              Redirecting you to complete a short form…
+            </p>
+          ) : (
+            <Link
+              href="/"
+              className="mt-6 text-sm font-medium text-healiu-dark transition-colors hover:text-healiu-blue"
+            >
+              Back to home
+            </Link>
+          )}
         </div>
       </div>
     </section>
