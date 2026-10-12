@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 
-/** Shared Calendly booking link for consultation / Book CTAs */
-export const BOOKING_URL = "https://calendly.com/joytitus652/30min";
+/** Shared payment link for consultation / Book CTAs */
+export const BOOKING_URL =
+  process.env.NEXT_PUBLIC_PAYMENT_LINK ?? "https://paystack.shop/pay/provider-fee";
 
 /** Shared sizing for paired CTAs (e.g. Sign In + Buy a service) */
 export const ctaEqualWidth = "w-[150px] max-w-[150px] justify-center";
