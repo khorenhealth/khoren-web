@@ -1,39 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ChevronDown, ChevronRight } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import {
+  ctaPrimaryClassName,
+  ctaPrimaryStyle,
+} from "@/components/_core/landing-pages/shared/cta-button-styles";
+import { homeFaqs } from "@/components/_core/landing-pages/shared/faq-data";
 import { cn } from "@/lib/utils";
 
-const faqs = [
-  {
-    id: 1,
-    question: "What is Khoren and how does it work?",
-    answer:
-      "Khoren is a caregiving and receiving platform that connects individuals needing medical and non-medical assistance with qualified service providers. Whether you require medical help, elderly care, childcare, rehabilitation services, or household support, Khoren offers a wide range of services.",
-  },
-  {
-    id: 2,
-    question: "How do I find and book a service provider on Khoren?",
-    answer:
-      "Browse verified providers by specialty, location, or availability, then select a plan or one-off visit. You can book a home visit or start a telemedicine consult in minutes, and track every step from request to care delivered.",
-  },
-  {
-    id: 3,
-    question: "How are the service providers vetted on Khoren?",
-    answer:
-      "Every provider is rigorously vetted. Credentials are verified, backgrounds are checked, and visits are clinically supervised. Every interaction is documented so you always know who is caring for you and how.",
-  },
-  {
-    id: 4,
-    question: "Can I modify or cancel my booking?",
-    answer:
-      "Yes. You can modify or cancel upcoming bookings from your account before the scheduled visit window. Timing rules may vary by service type, and you will always see the applicable policy before confirming a change.",
-  },
-];
-
 export function Faq() {
-  const [openId, setOpenId] = useState<number | null>(faqs[0].id);
+  const [openId, setOpenId] = useState<number | null>(homeFaqs[0].id);
 
   return (
     <section className="bg-white py-16 md:py-24">
@@ -48,7 +28,7 @@ export function Faq() {
           </h2>
 
           <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-4">
-            {faqs.map((faq) => {
+            {homeFaqs.map((faq) => {
               const open = openId === faq.id;
 
               return (
@@ -96,6 +76,14 @@ export function Faq() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <Link href="/faq">
+              <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
+                View More FAQs
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
