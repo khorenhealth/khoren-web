@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {
   Activity,
+  CirclePlay,
   FlaskConical,
   Search,
   ShieldCheck,
@@ -180,6 +181,8 @@ function ProviderCard({
 }
 
 export function ProvidersDirectory() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [activeFilter, setActiveFilter] = useState("all");
   const [query, setQuery] = useState("");
 
@@ -191,6 +194,26 @@ export function ProvidersDirectory() {
       offset: 40,
     });
   }, []);
+
+  const playVideo = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    try {
+      await video.play();
+      setIsPlaying(true);
+    } catch {
+      setIsPlaying(false);
+    }
+  };
+
+  const pauseVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.pause();
+    setIsPlaying(false);
+  };
 
   const list = providers.filter((provider) => {
     const matchesFilter =
@@ -213,6 +236,43 @@ export function ProvidersDirectory() {
       }}
     >
       <div className="app-width relative z-10">
+        <div
+          className="relative mx-auto mb-10 h-[560px] w-[min(100%,1000px)] overflow-hidden rounded-3xl bg-healiu-neutral-light-active shadow-lg sm:mb-12"
+          data-aos="fade-up"
+        >
+          <video
+            ref={videoRef}
+            className="h-full w-full object-contain"
+            playsInline
+            preload="metadata"
+            aria-label="Doctors at Khoren"
+            onEnded={() => setIsPlaying(false)}
+            onClick={() => {
+              if (isPlaying) pauseVideo();
+            }}
+          >
+            <source
+              src="/images/videos/doctors-at-khoren.mp4"
+              type="video/mp4"
+            />
+          </video>
+
+          {!isPlaying && (
+            <button
+              type="button"
+              onClick={playVideo}
+              aria-label="Play video"
+              className="absolute top-1/2 left-1/2 z-20 flex size-[4.5rem] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white shadow-[0_12px_40px_rgba(11,105,201,0.28)] transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-healiu-blue focus-visible:ring-offset-2 sm:size-20"
+            >
+              <CirclePlay
+                className="size-10 text-healiu-blue sm:size-11"
+                strokeWidth={1.75}
+                absoluteStrokeWidth
+              />
+            </button>
+          )}
+        </div>
+
         <div
           className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
           data-aos="fade-up"
