@@ -27,6 +27,7 @@ const navLinks = [
   { label: "About Us", href: "/about-us", hasDropdown: false },
   { label: "Our Services", href: "/#services", hasDropdown: false },
   { label: "Find a Care Provider", href: "/provider", hasDropdown: false },
+  { label: "FAQ", href: "/faq", hasDropdown: false },
   { label: "Contact", href: "/contact", hasDropdown: false },
 ];
 
