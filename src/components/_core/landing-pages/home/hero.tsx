@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { CirclePlay } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -103,6 +104,9 @@ function HeroFeatures() {
 }
 
 export function Hero() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -111,6 +115,27 @@ export function Hero() {
             offset: 40,
         });
     }, []);
+
+    const playVideo = async () => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        video.muted = false;
+        try {
+            await video.play();
+            setIsPlaying(true);
+        } catch {
+            // Autoplay with sound can fail; keep controls available via button
+            setIsPlaying(false);
+        }
+    };
+
+    const pauseVideo = () => {
+        const video = videoRef.current;
+        if (!video) return;
+        video.pause();
+        setIsPlaying(false);
+    };
 
     return (
         <section
@@ -169,26 +194,49 @@ export function Hero() {
                     </div>
 
                     <div
-                        className="relative mx-auto w-[min(100%,420px)] shrink-0 lg:w-100"
+                        className="relative mx-auto w-[min(100%,360px)] shrink-0 lg:w-90"
                         data-aos="fade-up"
                         data-aos-delay="150"
                     >
-                        <Image
-                            src="/images/pngs/hero-image.jpeg"
-                            alt="Smiling doctor ready for telemedicine consultation"
-                            width={400}
-                            height={520}
-                            priority
-                            className="h-auto w-full rounded-3xl object-cover shadow-lg"
-                            sizes="(max-width: 1024px) 400px, 520px"
-                        />
+                        <video
+                            ref={videoRef}
+                            className="aspect-[400/520] h-auto w-full rounded-3xl object-cover shadow-lg"
+                            playsInline
+                            preload="metadata"
+                            poster="/images/pngs/joy-titus.jpeg"
+                            aria-label="Khoren intro video"
+                            onEnded={() => setIsPlaying(false)}
+                            onClick={() => {
+                                if (isPlaying) pauseVideo();
+                            }}
+                        >
+                            <source
+                                src="/images/videos/hero-intro.mp4"
+                                type="video/mp4"
+                            />
+                        </video>
+
+                        {!isPlaying && (
+                            <button
+                                type="button"
+                                onClick={playVideo}
+                                aria-label="Play video"
+                                className="absolute cursor-pointer top-1/2 left-1/2 z-20 flex size-[4.5rem] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[0_12px_40px_rgba(11,105,201,0.28)] transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-healiu-blue focus-visible:ring-offset-2 sm:size-20"
+                            >
+                                <CirclePlay
+                                    className="size-10 text-healiu-blue sm:size-11"
+                                    strokeWidth={1.75}
+                                    absoluteStrokeWidth
+                                />
+                            </button>
+                        )}
 
                         <div className="absolute inset-x-3 bottom-4 z-10 sm:inset-x-4 sm:bottom-5">
                             <div className="flex items-center gap-3 rounded-2xl bg-white p-2.5 shadow-[0_10px_30px_rgba(11,105,201,0.16)] sm:gap-3.5 sm:rounded-[1.25rem] sm:p-3">
                                 <div className="relative size-12 shrink-0 overflow-hidden rounded-xl sm:size-14">
                                     <Image
-                                        src="/images/pngs/providers/micheal-okoh.png"
-                                        alt="PT. Micheal Okoh"
+                                        src="/images/pngs/joy-titus.jpeg"
+                                        alt="Joy Titus"
                                         fill
                                         className="object-cover object-top"
                                         sizes="56px"
@@ -196,10 +244,10 @@ export function Hero() {
                                 </div>
                                 <div className="min-w-0 flex-1">
                                     <p className="truncate text-sm font-semibold text-healiu-dark-dark sm:text-base">
-                                        PT. Micheal Okoh
+                                        Joy Titus
                                     </p>
                                     <p className="text-xs text-healiu-dark sm:text-sm">
-                                        Physiotherapist
+                                       Meet the Founder
                                     </p>
                                 </div>
                                 <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-healiu-neutral-light px-2.5 py-1 text-xs font-medium text-healiu-dark-dark">
