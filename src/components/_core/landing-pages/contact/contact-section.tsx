@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FileText, Mail, Phone, type LucideIcon } from "lucide-react";
@@ -56,6 +56,8 @@ function Field({
   type = "text",
   as = "input",
   autoComplete,
+  required = false,
+  disabled = false,
 }: {
   id: string;
   label: string;
@@ -63,6 +65,8 @@ function Field({
   type?: string;
   as?: "input" | "textarea";
   autoComplete?: string;
+  required?: boolean;
+  disabled?: boolean;
 }) {
   const sharedClassName = cn(
     "w-full rounded-xl border border-border bg-white px-4 text-sm text-healiu-dark-dark outline-none transition-colors placeholder:text-healiu-dark-lighter",
@@ -83,7 +87,9 @@ function Field({
           name={id}
           placeholder={placeholder}
           rows={5}
-          className={cn(sharedClassName, "resize-none py-3")}
+          required={required}
+          disabled={disabled}
+          className={cn(sharedClassName, "resize-none py-3 disabled:opacity-60")}
         />
       ) : (
         <input
@@ -92,7 +98,9 @@ function Field({
           type={type}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          className={cn(sharedClassName, "h-12")}
+          required={required}
+          disabled={disabled}
+          className={cn(sharedClassName, "h-12 disabled:opacity-60")}
         />
       )}
     </div>
@@ -138,6 +146,11 @@ function ContactDetailCard({
 }
 
 export function ContactSection() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
+    "idle",
+  );
+  const [errorMessage, setErrorMessage] = useState("");
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -146,6 +159,42 @@ export function ContactSection() {
       offset: 40,
     });
   }, []);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: data.get("full-name"),
+          email: data.get("email"),
+          inquiry: data.get("inquiry"),
+        }),
+      });
+      const payload = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setStatus("error");
+        setErrorMessage(
+          payload.error ?? "We couldn't send your message. Please try again.",
+        );
+        return;
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+      setErrorMessage("We couldn't send your message. Please try again.");
+    }
+  }
 
   return (
     <section className="relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32">
@@ -184,17 +233,14 @@ export function ContactSection() {
               </div>
             </div>
 
-            <form
-              className="space-y-5"
-              onSubmit={(event) => {
-                event.preventDefault();
-              }}
-            >
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <Field
                 id="full-name"
                 label="Full Name"
                 placeholder="Full Name"
                 autoComplete="name"
+                required
+                disabled={status === "submitting"}
               />
               <Field
                 id="email"
@@ -202,20 +248,35 @@ export function ContactSection() {
                 type="email"
                 placeholder="Enter your email address"
                 autoComplete="email"
+                required
+                disabled={status === "submitting"}
               />
               <Field
                 id="inquiry"
                 label="About your inquiry"
                 placeholder="Enter your message"
                 as="textarea"
+                required
+                disabled={status === "submitting"}
               />
               <Button
                 type="submit"
+                disabled={status === "submitting"}
                 className={cn(ctaPrimaryClassName, "h-12 w-full rounded-xl")}
                 style={ctaPrimaryStyle}
               >
-                Submit
+                {status === "submitting" ? "Sending..." : "Submit"}
               </Button>
+              {status === "success" ? (
+                <p className="text-sm text-healiu-dark" role="status">
+                  Thanks. Your message is on its way to our team.
+                </p>
+              ) : null}
+              {status === "error" ? (
+                <p className="text-sm text-red-600" role="alert">
+                  {errorMessage}
+                </p>
+              ) : null}
             </form>
           </div>
         </div>
