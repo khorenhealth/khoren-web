@@ -1,8 +1,11 @@
 import { cn } from "@/lib/utils";
 
-/** Shared payment link for consultation / Book CTAs */
+/** Shared payment link for service / Book Now CTAs */
 export const BOOKING_URL =
   process.env.NEXT_PUBLIC_PAYMENT_LINK ?? "https://paystack.shop/pay/provider-fee";
+
+/** Free consultation booking */
+export const CONSULTATION_URL = "https://calendly.com/joytitus652/30min";
 
 /** Shared sizing for paired CTAs (e.g. Sign In + Buy a service) */
 export const ctaEqualWidth = "w-[150px] max-w-[150px] justify-center";

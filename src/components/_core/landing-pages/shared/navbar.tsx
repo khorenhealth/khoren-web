@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import {
-  BOOKING_URL,
+  CONSULTATION_URL,
   // ctaEqualWidth,
   // ctaOutlineClassName,
   ctaPrimaryClassName,
@@ -103,7 +103,7 @@ export function Navbar() {
             Buy a service
           </Button> */}
           <a
-            href={BOOKING_URL}
+            href={CONSULTATION_URL}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -115,7 +115,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 lg:hidden">
           <a
-            href={BOOKING_URL}
+            href={CONSULTATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:block"
@@ -198,7 +198,7 @@ export function Navbar() {
                   Buy a service
                 </Button> */}
                 <a
-                  href={BOOKING_URL}
+                  href={CONSULTATION_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
