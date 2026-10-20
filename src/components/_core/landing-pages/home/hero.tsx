@@ -8,7 +8,7 @@ import { CirclePlay } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
-    BOOKING_URL,
+    CONSULTATION_URL,
     ctaOutlineClassName,
     ctaPrimaryClassName,
     ctaPrimaryStyle,
@@ -179,7 +179,7 @@ export function Hero() {
                                 Get Started
                             </Button>
                             <a
-                                href={BOOKING_URL}
+                                href={CONSULTATION_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
