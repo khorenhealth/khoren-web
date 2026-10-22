@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { BOOKING_URL } from "@/components/_core/landing-pages/shared/cta-button-styles";
+import { CONSULTATION_URL } from "@/components/_core/landing-pages/shared/cta-button-styles";
 import { cn } from "@/lib/utils";
 
 const categories = [
@@ -97,7 +97,7 @@ function ServiceCard({
             {service.description}
           </p>
           <a
-            href={BOOKING_URL}
+            href={CONSULTATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-block"

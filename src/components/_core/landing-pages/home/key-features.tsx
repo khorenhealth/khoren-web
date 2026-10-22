@@ -23,7 +23,7 @@ export function KeyFeatures() {
           className="relative mx-auto w-full min-w-0 max-w-md overflow-hidden rounded-[1.75rem] lg:max-w-none"
           data-aos="fade-right"
         >
-          <div className="relative aspect-[4/5] w-full sm:aspect-[3/4] lg:aspect-[4/5]">
+          <div className="relative aspect-4/5 w-full sm:aspect-3/4 lg:aspect-4/5">
             <Image
               src="/images/pngs/key-feature.png"
               alt="Doctor on a telemedicine call with a patient"
@@ -37,11 +37,11 @@ export function KeyFeatures() {
         <div className="max-w-xl" data-aos="fade-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-healiu-blue-light-active bg-healiu-blue-light px-3 py-1.5 text-sm font-medium text-healiu-blue">
             <CircleCheck className="size-4 fill-healiu-blue text-white" />
-            Key Features
+            Speak to a Professional
           </span>
 
-          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-healiu-dark-dark sm:text-4xl lg:text-[2.5rem] lg:leading-[1.15]">
-            Connect with a Doctor Online - Fast, Secure, and Hassle-Free
+          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-healiu-dark-dark sm:text-4xl lg:text-[3rem] lg:leading-[1.15]">
+            Connect with a <br /> Doctor Online - <br /> Fast, Secure, and Hassle-Free
           </h2>
 
           <p className="mt-4 text-base leading-relaxed text-healiu-dark sm:text-lg">
@@ -50,28 +50,29 @@ export function KeyFeatures() {
             assessments.
           </p>
 
-          <div className="mt-8 flex items-center gap-2 rounded-full border border-border bg-white p-1.5 shadow-sm">
+          {/* <div className="mt-8 flex items-center gap-2 rounded-full border border-border bg-white p-1.5 shadow-sm">
             <label htmlFor="appointment-date" className="sr-only">
               Appointment date
-            </label>
-            <input
+            </label> */}
+            {/* <input
               id="appointment-date"
               type="text"
               inputMode="numeric"
               placeholder="dd/mm/yyyy"
               className="min-w-0 flex-1 bg-transparent px-4 py-2 text-sm text-healiu-dark-dark outline-none placeholder:text-healiu-dark-lighter"
-            />
+            /> */}
             <a
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Book Appointment"
+              className="mt-8"
             >
               <Button
                 type="button"
                 className={cn(
                   ctaPrimaryClassName,
-                  "size-10 shrink-0 px-0 sm:h-10 sm:w-auto sm:px-6",
+                  "size-10 shrink-0 px-0 sm:h-10 sm:w-auto sm:px-6 mt-5",
                 )}
                 style={ctaPrimaryStyle}
               >
@@ -79,7 +80,7 @@ export function KeyFeatures() {
                 <span className="hidden sm:inline">Book Appointment</span>
               </Button>
             </a>
-          </div>
+          {/* </div> */}
 
           <div className="mt-8 flex items-center gap-3">
             <div className="flex -space-x-3">
