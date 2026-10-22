@@ -23,7 +23,7 @@ export function KeyFeatures() {
           className="relative mx-auto w-full min-w-0 max-w-md overflow-hidden rounded-[1.75rem] lg:max-w-none"
           data-aos="fade-right"
         >
-          <div className="relative aspect-[4/5] w-full sm:aspect-[3/4] lg:aspect-[4/5]">
+          <div className="relative aspect-4/5 w-full sm:aspect-3/4 lg:aspect-4/5">
             <Image
               src="/images/pngs/key-feature.png"
               alt="Doctor on a telemedicine call with a patient"
@@ -37,11 +37,11 @@ export function KeyFeatures() {
         <div className="max-w-xl" data-aos="fade-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-healiu-blue-light-active bg-healiu-blue-light px-3 py-1.5 text-sm font-medium text-healiu-blue">
             <CircleCheck className="size-4 fill-healiu-blue text-white" />
-            Key Features
+            Speak to a Professional
           </span>
 
-          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-healiu-dark-dark sm:text-4xl lg:text-[2.5rem] lg:leading-[1.15]">
-            Connect with a Doctor Online - Fast, Secure, and Hassle-Free
+          <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-healiu-dark-dark sm:text-4xl lg:text-[3rem] lg:leading-[1.15]">
+            Connect with a <br /> Doctor Online - <br /> Fast, Secure, and Hassle-Free
           </h2>
 
           <p className="mt-4 text-base leading-relaxed text-healiu-dark sm:text-lg">
