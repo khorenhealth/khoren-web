@@ -200,7 +200,7 @@ export function Hero() {
                     >
                         <video
                             ref={videoRef}
-                            className="aspect-[400/520] h-auto w-full rounded-3xl object-cover shadow-lg"
+                            className="aspect-400/520 h-auto w-full rounded-3xl object-cover shadow-lg"
                             playsInline
                             preload="metadata"
                             poster="/images/pngs/joy-titus.jpeg"
@@ -221,7 +221,7 @@ export function Hero() {
                                 type="button"
                                 onClick={playVideo}
                                 aria-label="Play video"
-                                className="absolute cursor-pointer top-1/2 left-1/2 z-20 flex size-[4.5rem] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[0_12px_40px_rgba(11,105,201,0.28)] transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-healiu-blue focus-visible:ring-offset-2 sm:size-20"
+                                className="absolute cursor-pointer top-1/2 left-1/2 z-20 flex size-18 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[0_12px_40px_rgba(11,105,201,0.28)] transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-healiu-blue focus-visible:ring-offset-2 sm:size-20"
                             >
                                 <CirclePlay
                                     className="size-10 text-healiu-blue sm:size-11"

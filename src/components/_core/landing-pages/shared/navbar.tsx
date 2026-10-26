@@ -17,6 +17,8 @@ import {
 import { cn } from "@/lib/utils";
 import {
   CONSULTATION_URL,
+  ctaEqualWidth,
+  ctaOutlineClassName,
   // ctaEqualWidth,
   // ctaOutlineClassName,
   ctaPrimaryClassName,
@@ -88,7 +90,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
-          {/* <Link href="/auth/login">
+          <Link href="/auth/sign-in">
             <Button
               variant="outline"
               className={cn(ctaOutlineClassName, ctaEqualWidth)}
@@ -101,8 +103,8 @@ export function Navbar() {
             style={ctaPrimaryStyle}
           >
             Buy a service
-          </Button> */}
-          <a
+          </Button>
+          {/* <a
             href={CONSULTATION_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -110,7 +112,7 @@ export function Navbar() {
             <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
               Book free Consultation
             </Button>
-          </a>
+          </a> */}
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">

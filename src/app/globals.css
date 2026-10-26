@@ -237,4 +237,20 @@
   .app-width {
     @apply mx-auto max-w-360 px-6 lg:px-10;
   }
+
+  .app-width-start {
+    padding-left: max(
+      calc(var(--spacing) * 6),
+      calc((100vw - (var(--spacing) * 360)) / 2 + (var(--spacing) * 6))
+    );
+  }
+
+  @media (min-width: 64rem) {
+    .app-width-start {
+      padding-left: max(
+        calc(var(--spacing) * 10),
+        calc((100vw - (var(--spacing) * 360)) / 2 + (var(--spacing) * 10))
+      );
+    }
+  }
 }

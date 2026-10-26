@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-import {
-  ctaPrimaryClassName,
-  ctaPrimaryStyle,
-} from "@/components/_core/landing-pages/shared/cta-button-styles";
-
 export function AuthHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -21,9 +15,6 @@ export function AuthHeader() {
             priority
           />
         </Link>
-        {/* <Button className={ctaPrimaryClassName} style={ctaPrimaryStyle}>
-          Buy a service
-        </Button> */}
       </div>
     </header>
   );
