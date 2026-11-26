@@ -51,7 +51,7 @@ export default function ProfileSuccessPage() {
 
       <div className="mt-6 space-y-3">
         <Link
-          href="/dashboard/patient"
+          href="/dashboard"
           className={cn(
             ctaPrimaryClassName,
             "inline-flex h-12 w-full items-center justify-center rounded-xl",
