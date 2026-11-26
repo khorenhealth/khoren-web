@@ -12,7 +12,7 @@ const pages: { href: string; title: string }[] = [
   { href: "/dashboard/health-record", title: "Health Records" },
   { href: "/dashboard/payments", title: "Payments" },
   { href: "/dashboard/settings", title: "Settings" },
-  { href: "/dashboard/profile", title: "Profile" },
+  { href: "/dashboard/profile", title: "Settings" },
 ];
 
 function titleFor(pathname: string) {

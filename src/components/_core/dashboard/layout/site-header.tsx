@@ -38,7 +38,7 @@ const navItems: {
     { label: "My Providers", href: "/dashboard/providers", icon: MyProvidersSVG },
     { label: "Health Record", href: "/dashboard/health-record", icon: HealthRecordSVG },
     { label: "Payments", href: "/dashboard/payments", icon: PaymentsSVG },
-    { label: "Settings", href: "/dashboard/settings", icon: SettingsSVG },
+    { label: "Settings", href: "/dashboard/profile", icon: SettingsSVG },
   ];
 
 function itemIsActive(pathname: string, item: (typeof navItems)[number]) {
