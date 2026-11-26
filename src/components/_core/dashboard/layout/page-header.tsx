@@ -9,7 +9,7 @@ const pages: { href: string; title: string }[] = [
   { href: "/dashboard/care-plan", title: "Care Plan" },
   { href: "/dashboard/appointments", title: "Appointments" },
   { href: "/dashboard/providers", title: "My Providers" },
-  { href: "/dashboard/health-record", title: "Health Record" },
+  { href: "/dashboard/health-record", title: "Health Records" },
   { href: "/dashboard/payments", title: "Payments" },
   { href: "/dashboard/settings", title: "Settings" },
   { href: "/dashboard/profile", title: "Profile" },
