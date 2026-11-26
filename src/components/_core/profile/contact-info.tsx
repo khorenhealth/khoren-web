@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { ChevronDown, Info } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
-  ctaPrimaryClassName,
-  ctaPrimaryStyle,
-} from "@/components/_core/landing-pages/shared/cta-button-styles";
+  ProfileFormActions,
+  profileSectionClassName,
+  type ProfilePresentation,
+} from "./presentation";
 import { cn } from "@/lib/utils";
 
 const totalSteps = 8;
@@ -53,9 +52,11 @@ function isContactPhone(value: string) {
 export function ContactInfo({
   onBack,
   onContinue,
+  presentation = "setup",
 }: {
-  onBack: () => void;
-  onContinue: () => void;
+  onBack?: () => void;
+  onContinue?: () => void;
+  presentation?: ProfilePresentation;
 }) {
   const [fullName, setFullName] = useState("Mr. Chidi Okonkwo");
   const [relationship, setRelationship] = useState<(typeof relationships)[number]>("Spouse");
@@ -65,7 +66,9 @@ export function ContactInfo({
   const canContinue = fullName.trim().length > 0 && phoneIsValid && permission;
 
   return (
-    <section className="my-auto w-full max-w-xl rounded-[1.75rem] bg-white px-6 py-7 shadow-[0_16px_50px_rgba(11,105,201,0.08)] sm:px-8">
+    <section className={profileSectionClassName(presentation)}>
+      {presentation === "setup" ? (
+      <>
       <div className="flex items-start justify-between gap-3">
         <p className="text-xs font-semibold text-healiu-blue sm:text-sm">
           Step {currentStep} of {totalSteps} · Emergency contact
@@ -85,8 +88,10 @@ export function ContactInfo({
           />
         ))}
       </div>
+      </>
+      ) : null}
 
-      <h1 className="mt-5 text-2xl font-bold tracking-tight text-healiu-dark-dark sm:text-[1.75rem]">
+      <h1 className={cn("text-2xl font-bold tracking-tight text-healiu-dark-dark sm:text-[1.75rem]", presentation === "setup" && "mt-5")}>
         Who can we contact?
       </h1>
       <p className="mt-2 text-sm leading-relaxed text-healiu-dark">
@@ -99,7 +104,7 @@ export function ContactInfo({
         onSubmit={(event) => {
           event.preventDefault();
           if (!canContinue) return;
-          onContinue();
+          onContinue?.();
         }}
       >
         <div className="flex gap-3 rounded-xl bg-healiu-blue-light px-4 py-3">
@@ -218,35 +223,11 @@ export function ContactInfo({
           )}
         </div>
 
-        <div className="flex items-center gap-3 pt-1">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={onBack}
-            className="h-12 w-28 shrink-0 rounded-xl border-healiu-blue bg-white text-sm font-medium text-healiu-blue hover:bg-healiu-blue-light hover:text-healiu-blue"
-          >
-            Back
-          </Button>
-          <Button
-            type="submit"
-            disabled={!canContinue}
-            className={cn(
-              "h-12 flex-1 rounded-xl text-sm font-medium",
-              canContinue
-                ? ctaPrimaryClassName
-                : "cursor-not-allowed border-transparent bg-[#E8EEF5] text-[#B7C3D1] disabled:opacity-100",
-            )}
-            style={canContinue ? ctaPrimaryStyle : undefined}
-          >
-            Continue
-          </Button>
-        </div>
-
-        <p className="text-sm">
-          <Link href="/" className="font-medium text-healiu-blue hover:underline">
-            Save & exit
-          </Link>
-        </p>
+        <ProfileFormActions
+          presentation={presentation}
+          onBack={onBack}
+          submitDisabled={!canContinue}
+        />
       </form>
     </section>
   );

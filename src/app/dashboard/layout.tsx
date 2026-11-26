@@ -6,9 +6,9 @@ export default function PatientDashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-dvh bg-[#F7F9FC]">
+    <div className="flex min-h-dvh flex-col bg-[#F7F9FC]">
       <SiteHeader />
-      <main>{children}</main>
+      <main className="flex flex-1 flex-col">{children}</main>
     </div>
   );
 }

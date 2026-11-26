@@ -155,9 +155,10 @@ export function SiteHeader() {
               <NotificationsSVG />
             </span>
           </button>
-          <button
-            type="button"
-            aria-label="Account menu"
+          <Link
+            href="/dashboard/profile"
+            aria-label="Profile"
+            aria-current={pathname.startsWith("/dashboard/profile") ? "page" : undefined}
             className="flex h-10 items-center gap-4 rounded-md border border-[#E4E8EE] bg-white py-1 pr-1.5 pl-1 hover:bg-[#F7F9FC]"
           >
             <span className="relative size-8 overflow-hidden rounded-lg bg-[#F4B4B4]">
@@ -170,7 +171,7 @@ export function SiteHeader() {
               />
             </span>
             <AngleSVG />
-          </button>
+          </Link>
         </div>
       </div>
     </header>
