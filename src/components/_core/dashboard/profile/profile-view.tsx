@@ -35,7 +35,7 @@ export function DashboardProfile() {
   const [active, setActive] = useState(sections[0].id);
 
   return (
-    <div className="flex flex-1 flex-col gap-4 px-4 py-6 lg:flex-row lg:items-start lg:gap-6 lg:px-6">
+    <div className="flex flex-1 flex-col gap-4 px-4 pt-4 pb-6 lg:flex-row lg:items-start lg:gap-6 lg:px-6">
       <aside className="lg:sticky lg:top-20 lg:w-64 lg:shrink-0">
         <nav
           aria-label="Profile sections"
